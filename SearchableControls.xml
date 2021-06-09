@@ -1,0 +1,1151 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SearchableControls</name>
+    </assembly>
+    <members>
+        <member name="T:SearchableControls.FindDialog">
+            <summary>
+            A dialog for the user to search another control or form for specified text
+            </summary>
+        </member>
+        <member name="P:SearchableControls.FindDialog.ParentControl">
+            <summary>
+            Record of the parent form
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.parentControl_Leave(System.Object,System.EventArgs)">
+            <summary>
+            Event added to the parent control so that the FindForm can hide itself when the parent control isn't active
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.#ctor">
+            <summary>
+            Make a dialog for the user to search for specified text in a control or form
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.findForm_Deactivate(System.Object,System.EventArgs)">
+            <summary>
+            Handle deactivate instructions received from FindForm
+            </summary>
+            <param name="sender">Sending object</param>
+            <param name="e">Event args</param>
+        </member>
+        <member name="F:SearchableControls.FindDialog.formRestoreData">
+            <summary>
+            A local store of the FindForm's restore data (user-changable settings)
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Show(System.String,System.Boolean)">
+            <summary>
+            Present the form to the user with the given default text
+            </summary>
+            <param name="defaultText">The default text to set</param>
+            <param name="replaceMode">Start in Replace mode?</param>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Show(System.String)">
+            <summary>
+            Present the form to the user with the given default text
+            </summary>
+            <param name="defaultText">The default text to set</param>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Show(System.Boolean)">
+            <summary>
+            Present the form to the user
+            </summary>
+            <param name="replaceMode">Start in Replace mode</param>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Show">
+            <summary>
+            Present the form to the user
+            </summary>
+        </member>
+        <member name="P:SearchableControls.FindDialog.Visible">
+            <summary>
+            Is the find dialog currently visible?
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Close">
+            <summary>
+            Close the FindDialog - whatever state it is in
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Search">
+            <summary>
+            Instigate a search
+            </summary>
+            <remarks>
+            Intended for use by FindDialog or FindForm only
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.FindDialog.FindNextIsAvailable">
+            <summary>
+            Returns true if FindNext is available
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.FindNext">
+            <summary>
+            Makes the dialog instigate another search - if this facility is available
+            </summary>
+            <returns>True if the search was succesful</returns>
+        </member>
+        <member name="T:SearchableControls.FindDialog.SearchModes">
+            <summary>
+            The states that the search system can be in
+            </summary>
+        </member>
+        <member name="P:SearchableControls.FindDialog.SearchMode">
+            <summary>
+            The current state of the search system from the user's point of view
+            </summary>
+        </member>
+        <member name="P:SearchableControls.FindDialog.SearchRegularExpression">
+            <summary>
+            The most recent search requested in regular expression form
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.findForm_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            When the find form is being closed we record the user-changable settings for later restoration
+            </summary>
+        </member>
+        <member name="P:SearchableControls.FindDialog.ReplaceAvailable">
+            <summary>
+            Is Replace offered on the find dialog if just Find is selected?
+            </summary>
+        </member>
+        <member name="E:SearchableControls.FindDialog.Deactivate">
+            <summary>
+            The find dialog is no longer active
+            </summary>
+        </member>
+        <member name="E:SearchableControls.FindDialog.SearchRequested">
+            <summary>
+            The find dialog is requesting a search
+            </summary>
+        </member>
+        <member name="E:SearchableControls.FindDialog.ReplaceRequested">
+            <summary>
+            The find dialog is requesting a replace of the last selected text
+            </summary>
+        </member>
+        <member name="E:SearchableControls.FindDialog.CancelReplaceRequested">
+            <summary>
+            The find dialog is requesting a cancel of the last replace operation
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Replace(System.String)">
+            <summary>
+            Start a replace operation on the last selected text
+            </summary>
+            <param name="replaceText">The string to replace</param>
+        </member>
+        <member name="P:SearchableControls.FindDialog.Focused">
+            <summary>
+            Does the find dialog have the user focus?
+            </summary>
+        </member>
+        <member name="F:SearchableControls.FindDialog.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControls.FindDialog.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SearchableControls.FindForm">
+            <summary>
+            A dialog to find a user-supplied text string
+            </summary>
+            <remarks>
+            <para>Part of SearchableControls written by Jim Blackler (jimblackler@gmail.com), August 2006</para>
+            <para>A partner class to FindDialog which is the control applied to add search functionality
+            to other controls.</para>
+            </remarks>
+            <summary>
+            A simple dialog to find a supplied text string
+            </summary>
+        </member>
+        <member name="F:SearchableControls.FindForm.findDialog">
+            <summary>
+            Record of the FindDialog
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.#ctor(SearchableControls.FindDialog,System.IO.Stream,System.Runtime.Serialization.IFormatter,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Make a simple find dialog
+            </summary>
+            <param name="_findDialog">The FindDialog parent object</param>
+            <param name="defaultText">Default text for the input box</param>
+            <param name="restoreData">Restore data (if any) to restore the user-changeable form properties from</param>
+            <param name="formatter">Formatter to read the above</param>
+            <param name="replaceMode">Start in replace mode?</param>
+            <param name="offerReplace">Offer the user the chance to switch to Replace mode?</param>
+        </member>
+        <member name="M:SearchableControls.FindForm.searchButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Search button has been pressed
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.replaceButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Replace button has been pressed
+            </summary>
+        </member>
+        <member name="F:SearchableControls.FindForm.numberFindAllReplaces">
+            <summary>
+            Local record of number of matches done in 'find all' mode
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.replaceAllButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            User pressed 'Replace All;
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SearchableControls.FindForm.cancelButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cancel button clicked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SearchableControls.FindForm.searchHistoryComboBox_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            User is typing in the text string box... make sure label doesn't say 'Find Again' any more
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.searchTypeComboBox_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            User changed search type... re-enable search button.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.ignoreCaseCheckBox_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            User checked ignore case checkbox... re-enable search button.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.FindDialog_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            User has pressed a key in the text box
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.SearchPressed">
+            <summary>
+            Invoke a search.
+            </summary>
+        </member>
+        <member name="P:SearchableControls.FindForm.SearchRegularExpression">
+            <summary>
+            Regular expression forming the most recent search
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.Reshow">
+            <summary>
+            Bring the dialog to the front and select all the text
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.FindNextIsAvailable">
+            <summary>
+            Discovers if it is meaningful to attempt to FindNext
+            </summary>
+            <returns>'True' if it is meaningful to attempt to FindNext
+            </returns>
+            <remarks>
+            Typically used by client applications to decide whether to 'grey out' menu or toolbar entries 
+            relating to FindNext()
+            </remarks>
+        </member>
+        <member name="T:SearchableControls.FindForm.SearchType">
+            <summary>
+            Search types for the combo box
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.ApplySearchMode">
+            <summary>
+            Set the visual style of the current search mode
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.SerializeList(System.IO.Stream,System.Runtime.Serialization.IFormatter,System.Collections.IList)">
+            <summary>
+            A generaral-purpose function to serialise a list to a stream
+            </summary>
+            <param name="stream">The stream to write the data into</param>
+            <param name="formatter">The formatter to use</param>
+            <param name="list">The list to serialise</param>
+        </member>
+        <member name="M:SearchableControls.FindForm.DeserializeList(System.IO.Stream,System.Runtime.Serialization.IFormatter,System.Collections.IList)">
+            <summary>
+            A general-purpose function to deserialize a list from a stream
+            </summary>
+            <param name="stream">The stream to read the data from</param>
+            <param name="formatter">The formatter to use</param>
+            <param name="list">The list to deserialize</param>
+        </member>
+        <member name="M:SearchableControls.FindForm.GetRestoreData(System.IO.Stream,System.Runtime.Serialization.IFormatter)">
+            <summary>
+            Record the user-changable settings and apperance of the form for later restoration
+            </summary>
+            <param name="stream">A stream to write the data into</param>
+            <param name="formatter">The formatter to use</param>
+        </member>
+        <member name="M:SearchableControls.FindForm.ApplyRestoreData(System.IO.Stream,System.Runtime.Serialization.IFormatter)">
+            <summary>
+            Apply the dialog settings that have previously been serialized
+            </summary>
+            <param name="stream">The stream to apply the settings from</param>
+            <param name="formatter">The formatter to use</param>
+        </member>
+        <member name="M:SearchableControls.FindForm.replaceModeCheckBox_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            User has switched search/replace mode
+            </summary>
+        </member>
+        <member name="P:SearchableControls.FindForm.ReplaceMode">
+            <summary>
+            Is the dialog showing options relating to Find and Replace?
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.SetAppearanceFromReplaceMode">
+            <summary>
+            Reposition the dialog elements to the positions appropriate to the search/replace mode
+            </summary>
+        </member>
+        <member name="F:SearchableControls.FindForm.components">
+            <summary>
+            Required designer variable
+            </summary>
+        </member>
+        <member name="M:SearchableControls.FindForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControls.FindForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SearchableControls.InfoForm">
+            <summary>
+            Form for relaying a simple message to the user
+            </summary>
+        </member>
+        <member name="M:SearchableControls.InfoForm.#ctor(System.String,System.Windows.Forms.Form)">
+            <summary>
+            Make a form for relaying a simple message to the usre
+            </summary>
+            <param name="text">The text to display</param>
+            <param name="owner">The owning form</param>
+        </member>
+        <member name="F:SearchableControls.InfoForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.InfoForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControls.InfoForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SearchableControls.ISearchable">
+            <summary>
+            Searchable controls inherit from ISearchable interface simply to make it easier to invoke
+            searches from a form's menu or toolbars when multiple searchable controls are used.
+            </summary>
+        </member>
+        <member name="P:SearchableControls.ISearchable.FindDialog">
+            <summary>
+            Return the FindDialog (if any) currently associated with this control
+            </summary>
+        </member>
+        <member name="T:SearchableControls.ReplaceEventArgs">
+            <summary>
+            Search event arguments for a control replace operation
+            </summary>
+        </member>
+        <member name="P:SearchableControls.ReplaceEventArgs.ReplaceText">
+            <summary>
+            The text to replace the most recent selection
+            </summary>
+        </member>
+        <member name="T:SearchableControls.ReplaceEventHandler">
+            <summary>
+            The search dialog is requesting a replace of the last selected text
+            </summary>
+            <param name="sender">Sender object (the search dialog)</param>
+            <param name="e">Replace event parameters</param>
+        </member>
+        <member name="T:SearchableControls.Utility">
+            <summary>
+            Place holder for utility functions relating to the SearchableControls collection
+            </summary>
+            <remarks>
+            <para>Part of SearchableControls written by Jim Blackler (jimblackler@gmail.com), August 2006</para>
+            <para>Note that these functions are only worth using if you have more than one SearchableControl on 
+            a form.</para>
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.Utility.FindSearchable(System.Windows.Forms.Control.ControlCollection)">
+            <summary>
+            Returns either the focused control, if it is ISearchable. Otherwise the
+            searchable control with the lowest TabIndex.
+            </summary>
+            <param name="controlCollection">The control collection to search</param>
+            <remarks>
+            Provided as a utility function to allow client applications to easily provide a Find option in 
+            their forms' Edit menus, or on toolbars.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.Utility.OpenFindDialog(System.Windows.Forms.Control.ControlCollection)">
+            <summary>
+            Opens the find dialog on the most appropriate control in the container
+            </summary>
+            <returns>'True' if a find dialog was found to open</returns>
+            <remarks>
+            Uses the utility functions FindSearchable() with the form's ControlCollection to find either the
+            focused control, if it is ISearchable, or the searchable control with the lowest TabIndex.
+            Calls OpenDialog on the resulting control.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.Utility.FindNext(System.Windows.Forms.Control.ControlCollection)">
+            <summary>
+            Calls FindNext() on the most appropriate control in the container
+            </summary>
+            <returns>'True' if FindNext executed successfully on a control</returns>
+            <remarks>
+            Uses the utility functions FindSearchable() with the form's ControlCollection to find either the
+            focused control, if it is ISearchable, or the searchable control with the lowest TabIndex.
+            Calls OpenDialog on the resulting control.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.Utility.FindNextIsAvailable(System.Windows.Forms.Control.ControlCollection)">
+            <summary>
+            Informs the user if FindNext is available in the supplied control selection
+            </summary>
+            <returns>The value of FindNextIsAvailable() on the most appropriate control in the container</returns>
+            <remarks>
+            Uses the utility functions FindSearchable() with the form's ControlCollection to find either the
+            focused control, if it is ISearchable, or the searchable control with the lowest TabIndex.
+            Calls OpenDialog on the resulting control.
+            </remarks>
+        </member>
+        <member name="T:SearchableControls.SearchableListView">
+             <summary>
+             An extension of the Framework's ListView control that allows the user to search for text in the tree
+             by pressing CTRL-F, or using the context menu. It also includes "select all" functionality.
+             </summary>
+             <remarks>
+             <para>Part of SearchableControls written by Jim Blackler (jimblackler@gmail.com), August 2006</para>
+             
+             <para>To use, simply build the SearchableControls library and add a reference it in your project. The
+             SearchableListView control should appear in the SearchableControls tab of the Visual Studio toolbox.
+             Drag this control to your forms in the way you would a standard ListView.</para>
+             
+             <para>You may wish to give your forms an Edit/Find menu item with a specified shortcut of Ctrl-F. 
+             This should call the OpenFindDialog() function of the main searchable control, or in the case of
+             multiple searchable controls, the focused control. You could provide the same option from toolbars.</para>
+             
+             <para>By default this form will just search the Text field of each ListViewNode. A mechanism exists to
+             provide a delegate to perform an alternative searching procedure.</para>
+             
+             <para>As you can see the class is derived directly from ListView so can do everything that the standard
+             ListView can do.</para>
+            </remarks>
+        </member>
+        <member name="T:SearchableControls.SearchableListView.NodeSearchDelegate">
+            <summary>
+            Delegate of node searching function.
+            </summary>
+            <param name="node">The TreeNode to search</param>
+            <param name="regularExpression">The regular expression to use to match text</param>
+            <returns>'True' if the treeNode is deemed to have matched</returns>
+        </member>
+        <member name="P:SearchableControls.SearchableListView.NodeSearcher">
+            <summary>
+            Node searching function
+            </summary>
+            <remarks>
+            This is set to a search of the Text property of the listViewItem, but can be overridden by the
+            client to provide custom search facilities of whatever the node conceptually contains, typically
+            by using the node's Tag value to link it to an object.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.#ctor">
+            <summary>
+            Construct a SearchableListView treeview control
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.SearchableListView_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handle key events. Used to provide find functions
+            </summary>
+            <param name="sender">Standard system parameter</param>
+            <param name="e">Standard system parameter</param>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.SelectAll">
+            <summary>
+            Select all the list items
+            </summary>
+            <remakrs>
+            Not supplied in the basic Framework version
+            </remakrs>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.DefaultNodeSearch(System.Windows.Forms.ListViewItem,System.Text.RegularExpressions.Regex)">
+            <summary>
+            Default function to search a node
+            </summary>
+            <param name="listViewItem">The ListViewItem to search</param>
+            <param name="regularExpression">The regular expression to use to match text</param>
+            <returns>'True' if the treeNode is deemed to have matched</returns>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.RestoreHideSelection(System.Object,System.EventArgs)">
+            <summary>
+            Put this control's HideSelection property back to normal when the FindDialog is deactivated
+            </summary>
+            <remarks>
+            This unfortunately causes a slight flicker. One way to avoid this is to turn off HideSelection
+            in individual control instances.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.contextMenuStrip_Opening(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Context menu is being opened. Grey out appropriate selections
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.findToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Find Text from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.selectAllToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select All from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.SubSearch(System.Text.RegularExpressions.Regex,System.Int32,System.Int32)">
+            <summary>
+            Search a subset of the list view's items', by index range
+            </summary>
+            <param name="regularExpression">The regular expression to use to match text</param>
+            <param name="start">The list index to start searching from</param>
+            <param name="end">The list index after the one to stop searching at</param>
+            <returns>'True' if the search was successful</returns>
+        </member>
+        <member name="F:SearchableControls.SearchableListView.originalSelectionStart">
+            <summary>
+            A record of the first node of a search series
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.findDialog1_SearchRequested(System.Object,SearchableControls.SearchEventArgs)">
+            <summary>
+            Perform the search on the list view
+            </summary>
+            <param name="sender">Sending object</param>
+            <param name="e">Parameters relating to the search event</param>
+        </member>
+        <member name="P:SearchableControls.SearchableListView.FindDialog">
+            <summary>
+            Return the FindDialog associated with the control
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableListView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControls.SearchableListView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SearchableControls.SearchableRichTextBox">
+             <summary>
+             An extension of the Framework's RichTextBox control that allows the user to search for text in the
+             control by pressing CTRL-F or by using the context menu.
+             It also returns the standard CTRL-A shortcut to select all the text in the control.
+             </summary>
+             <remarks>
+             <para>Part of SearchableControls written by Jim Blackler (jimblackler@gmail.com), August 2006</para>
+             
+             <para>To use, simply build the SearchableControls library and add a reference it in your project. The
+             SearchableRichTextBox control should appear in the SearchableControls tab of the Visual Studio
+             toolbox. Drag this control to your forms in the way you would a standard RichTextBox.</para>
+             
+             <para>You may wish to give your forms an Edit/Find menu item with a specified shortcut of Ctrl-F. 
+             This should call the OpenFindDialog() function of the main searchable control, or in the case of
+             multiple searchable controls, the focused control. You could provide the same option from toolbars.</para>
+             
+             <para>As you can see the class is derived directly from RichTextBox so can do everything that the standard
+             RichTextBox can do.</para>
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.#ctor">
+            <summary>
+            Construct a SearchableRichTextBox textbox
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.SearchableRichTextBox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handle key events
+            </summary>
+            <remarks>
+            Used to process custom shortcuts
+            </remarks>
+            <param name="sender">Standard system parameter</param>
+            <param name="e">Standard system parameter</param>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.IsWordChar(System.Char)">
+            <summary>
+            Helper function for selecting a word
+            </summary>
+            <param name="p">A character from the possible word</param>
+            <returns>True if this is a word character</returns>
+        </member>
+        <member name="F:SearchableControls.SearchableRichTextBox.textBeforeReplace">
+            <summary>
+            A record of the control's text before any replace operations
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableRichTextBox.textAfterReplace">
+            <summary>
+            A record of the control's text after most recent replace operations
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.Undo">
+            <summary>
+            Overriden Undo to undo replace operations
+            </summary>
+            <remarks>
+            Would be a lot simpler if the framework controls gave you access to their undo stack
+            </remarks>
+        </member>
+        <member name="P:SearchableControls.SearchableRichTextBox.CanUndo">
+            <summary>
+            Overridden CanUndo to include local undo operation
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.Redo">
+            <summary>
+            Overriden Redo to redo replace operations
+            </summary>
+            <remarks>
+            Would be a lot simpler if the framework controls gave you access to their undo stack
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.NewSearch(System.Boolean)">
+            <summary>
+            Start a new search
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.RestoreHideSelection(System.Object,System.EventArgs)">
+            <summary>
+            Put this control's HideSelection property back to normal when the FindDialog is deactivated
+            </summary>
+            <remarks>
+            This unfortunately causes a slight flicker. One way to avoid this is to turn off HideSelection
+            in individual control instances.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.contextMenuStrip1_Opening(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Enable the context menu items that can be invoked
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.undoToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Undo from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.cutToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cut from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.copyToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Copy from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.pasteToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Paste from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.deleteToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Delete from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.selectAllToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select All from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.findToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Find Text from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.replaceToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Replace from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.fontToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Font from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.boldToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bold from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.italicsToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Italics from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.underlineToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Underline from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.SubSearch(System.Text.RegularExpressions.Regex,System.Int32,System.Int32)">
+            <summary>
+            Search a sub-portion of the text
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableRichTextBox.originalSelectionStart">
+            <summary>
+            Stores the selection start position on the first search so that when all searches are complete
+            this fact can be reported to the user in the find dialog.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.findDialog1_SearchRequested(System.Object,SearchableControls.SearchEventArgs)">
+            <summary>
+            Perform the search on the text box
+            </summary>
+            <param name="sender">Sending object</param>
+            <param name="e">Parameters relating to the search event</param>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.findDialog1_ReplaceRequested(System.Object,SearchableControls.ReplaceEventArgs)">
+            <summary>
+            The find dialog has requested a replace operation on the most recently selected text
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.SearchableRichTextBox_ReadOnlyChanged(System.Object,System.EventArgs)">
+            <summary>
+            The read-only property has been changed on the control
+            </summary>
+        </member>
+        <member name="P:SearchableControls.SearchableRichTextBox.FindDialog">
+            <summary>
+            Return the FindDialog (if any) currently associated with this control
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.findDialog1_CancelReplaceRequested(System.Object,System.EventArgs)">
+            <summary>
+            User pressed cancel button on find form
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableRichTextBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControls.SearchableRichTextBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SearchableControls.SearchEventArgs">
+            <summary>
+            Search event arguments for a control search
+            </summary>
+        </member>
+        <member name="P:SearchableControls.SearchEventArgs.Successful">
+            <summary>
+            Whether or not the search has returned a match
+            </summary>
+            <remarks>To be set by the </remarks>
+        </member>
+        <member name="P:SearchableControls.SearchEventArgs.RestartedFromDocumentTop">
+            <summary>
+            Whether or not the search restarted from the top of the document(for the find dialog to reflect)
+            </summary>
+        </member>
+        <member name="P:SearchableControls.SearchEventArgs.FirstSearch">
+            <summary>
+            'True' if this is the first search performed
+            </summary>
+            <remarks>
+            Optional, to be used by the searching control to remember the selection position 
+            when searching begins.
+            </remarks>
+        </member>
+        <member name="P:SearchableControls.SearchEventArgs.SearchRegularExpression">
+            <summary>
+            The regular expression that performs the search
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchEventArgs.#ctor(System.Text.RegularExpressions.Regex,System.Boolean)">
+            <summary>
+            Makes search event arguments for a control search
+            </summary>
+        </member>
+        <member name="T:SearchableControls.SearchEventHandler">
+            <summary>
+            The search dialog is requesting a search
+            </summary>
+            <param name="sender">Sender object</param>
+            <param name="e">Search event parameters</param>
+            <remarks>
+            <para>It is intended for the searchable control or form to supply a handler for this event.</para>
+            <para>It is expected to search its own content from the currently selected position to the end of the document or to 
+            to the originally selected position (at the beginning of the search when e.FirstSearch was true), whichever is first.</para>
+            <para> If a match is found it is expected to select the match and set e.Succesful to be true. If no match is found,
+            and the originally selected position is before the current position, the control is expected to set
+            e.RestartedFromDocumentTop to be True and then search the document from the top to the originally selected position.</para>
+            <para>When finding a match, the control is expected to visibly select the found text in a manner that will still be
+            visible when the form of FindDialog is in focus.</para>
+            <para>If no match is found by either technique the control is expected to leave Succesful set as false.</para>
+            </remarks>
+        </member>
+        <member name="T:SearchableControls.SearchableTextBox">
+             <summary>
+             An extension of the Framework's TextBox control that allows the user to search for text in the
+             control by pressing CTRL-F or by using the context menu.
+             It also returns the standard CTRL-A shortcut to select all the text in the control.
+             </summary>
+             <remarks>
+             <para>Part of SearchableControls written by Jim Blackler (jimblackler@gmail.com), August 2006</para>
+             
+             <para>To use, simply build the SearchableControls library and add a reference it in your project. The
+             SearchableTextBox control should appear in the SearchableControls tab of the Visual Studio
+             toolbox. Drag this control to your forms in the way you would a standard TextBox.</para>
+             
+             <para>You may wish to give your forms an Edit/Find menu item with a specified shortcut of Ctrl-F. 
+             This should call the OpenFindDialog() function of the main searchable control, or in the case of
+             multiple searchable controls, the focused control. You could provide the same option from toolbars.</para>
+             
+             <para>As you can see the class is derived directly from TextBox so can do everything that the standard
+             TextBox can do.</para>
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.#ctor">
+            <summary>
+            Construct a SearchableTextBox textbox
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.SearchableTextBox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handle key events
+            </summary>
+            <remarks>
+            Used to process custom shortcuts
+            </remarks>
+            <param name="sender">Standard system parameter</param>
+            <param name="e">Standard system parameter</param>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.IsWordChar(System.Char)">
+            <summary>
+            Helper function for selecting a word
+            </summary>
+            <param name="p">A character from the possible word</param>
+            <returns>True if this is a word character</returns>
+        </member>
+        <member name="F:SearchableControls.SearchableTextBox.textBeforeReplace">
+            <summary>
+            A record of the control's text before any replace operations
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableTextBox.textAfterReplace">
+            <summary>
+            A record of the control's text after most recent replace operations
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.Undo">
+            <summary>
+            Overriden Undo to undo replace operations
+            </summary>
+            <remarks>
+            Would be a lot simpler if the framework controls gave you access to their undo stack
+            </remarks>
+        </member>
+        <member name="P:SearchableControls.SearchableTextBox.CanUndo">
+            <summary>
+            Overridden CanUndo to include local undo operation
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.Redo">
+            <summary>
+            Redo to redo replace operations
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.NewSearch(System.Boolean)">
+            <summary>
+            Start a new search
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.RestoreHideSelection(System.Object,System.EventArgs)">
+            <summary>
+            Put this control's HideSelection property back to normal when the FindDialog is deactivated
+            </summary>
+            <remarks>
+            This unfortunately causes a slight flicker. One way to avoid this is to turn off HideSelection
+            in individual control instances.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.contextMenuStrip1_Opening(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Enable the context menu items that can be invoked
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.undoToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Undo from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.cutToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cut from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.copyToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Copy from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.pasteToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Paste from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.deleteToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Delete from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.selectAllToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select All from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.findToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Find Text from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.replaceToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Replace from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.SubSearch(System.Text.RegularExpressions.Regex,System.Int32,System.Int32)">
+            <summary>
+            Search a sub-portion of the text
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableTextBox.originalSelectionStart">
+            <summary>
+            Stores the selection start position on the first search so that when all searches are complete
+            this fact can be reported to the user in the find dialog.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.findDialog1_SearchRequested(System.Object,SearchableControls.SearchEventArgs)">
+            <summary>
+            Perform the search on the text box
+            </summary>
+            <param name="sender">Sending object</param>
+            <param name="e">Parameters relating to the search event</param>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.findDialog1_ReplaceRequested(System.Object,SearchableControls.ReplaceEventArgs)">
+            <summary>
+            The find dialog has requested a replace operation on the most recently selected text
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.SearchableTextBox_ReadOnlyChanged(System.Object,System.EventArgs)">
+            <summary>
+            The read-only property has been changed on the control
+            </summary>
+        </member>
+        <member name="P:SearchableControls.SearchableTextBox.FindDialog">
+            <summary>
+            Return the FindDialog (if any) currently associated with this control
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.findDialog1_CancelReplaceRequested(System.Object,System.EventArgs)">
+            <summary>
+            User pressed cancel button on find form
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableTextBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControls.SearchableTextBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SearchableControls.SearchableTreeView">
+             <summary>
+             An extension of the Framework's TreeView control that allows the user to search for text in the control
+             by pressing CTRL-F or using the context menu.
+             </summary>
+             <remarks>
+             <para>To use, simply build the SearchableControls library and add a reference it in your project. The
+             SearchableTreeView control should appear in the SearchableControls tab of the Visual Studio toolbox.
+             Drag this control to your forms in the way you would a standard TreeView.</para>
+             
+             <para>You may wish to give your forms an Edit/Find menu item with a specified shortcut of Ctrl-F. 
+             This should call the OpenFindDialog() function of the main searchable control, or in the case of
+             multiple searchable controls, the focused control. You could provide the same option from toolbars.</para>
+             
+             <para>By default this form will just search the Text field of each TreeViewNode. A mechanism exists to
+             provide a delegate to perform an alternative searching procedure.</para>
+             
+             <para>As you can see the class is derived directly from TreeView so can do everything that the standard
+             TreeView can do.</para>
+            </remarks>
+        </member>
+        <member name="T:SearchableControls.SearchableTreeView.NodeSearchDelegate">
+            <summary>
+            Delegate of node searching function.
+            </summary>
+            <param name="node">The TreeNode to search</param>
+            <param name="regularExpression">The regular expression to use to match text</param>
+            <returns>'True' if the treeNode is deemed to have matched</returns>
+        </member>
+        <member name="P:SearchableControls.SearchableTreeView.NodeSearcher">
+            <summary>
+            Node searching function
+            </summary>
+            <remarks>
+            This is set to a search of the Text property of the treeNode, but can be overridden by the
+            client to provide custom search facilities of whatever the node conceptually contains, typically
+            by using the node's Tag value to link it to an object.
+            </remarks>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.#ctor">
+            <summary>
+            Construct a SearchableTreeView treeview control
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.findToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Find Text from context menu
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.SearchableTreeView_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handle key events. Used to provide find functions
+            </summary>
+            <param name="sender">Standard system parameter</param>
+            <param name="e">Standard system parameter</param>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.DefaultNodeSearch(System.Windows.Forms.TreeNode,System.Text.RegularExpressions.Regex)">
+            <summary>
+            Default function to search a node
+            </summary>
+            <param name="treeNode">The TreeNode to search</param>
+            <param name="regularExpression">The regular expression to use to match text</param>
+            <returns>'True' if the treeNode is deemed to have matched</returns>
+        </member>
+        <member name="T:SearchableControls.SearchableTreeView.TreeSearchState">
+            <summary>
+            The various modes that the recursive scan can be in
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.SubSearch(System.Text.RegularExpressions.Regex,System.Windows.Forms.TreeNodeCollection,System.Windows.Forms.TreeNode,System.Windows.Forms.TreeNode,SearchableControls.SearchableTreeView.TreeSearchState@)">
+            <summary>
+            A recursive 'sub search' command is used to search part of the tree
+            </summary>
+            <param name="regularExpression">The regular expression to use to match text</param>
+            <param name="treeNodeCollection">The collection of nodes to search down from</param>
+            <param name="startAfterNode">The node that searching actually begins from
+            (otherwise just walk the tree until this node is found)</param>
+            <param name="stopAtNode">A node to terminate the search at</param>
+            <param name="state">Sends and returns the state of the recursive search</param>
+        </member>
+        <member name="F:SearchableControls.SearchableTreeView.originalSelectionStart">
+            <summary>
+            A record of the first node of a search series
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.RestoreHideSelection(System.Object,System.EventArgs)">
+            <summary>
+            Put this control's HideSelection property back to normal when the FindDialog is deactivated
+            </summary>
+            <remarks>
+            This unfortunately causes a slight flicker. One way to avoid this is to turn off HideSelection
+            in individual control instances.
+            </remarks>
+        </member>
+        <member name="P:SearchableControls.SearchableTreeView.FindDialog">
+            <summary>
+            Return the FindDialog associated with the control
+            </summary>
+        </member>
+        <member name="F:SearchableControls.SearchableTreeView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControls.SearchableTreeView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

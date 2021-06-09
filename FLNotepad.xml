@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Freelancer Notepad.NET 2.0</name>
+    </assembly>
+    <members>
+        <member name="F:FLNotePad.XMLConverter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.XMLConverter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:FLNotePad.XMLConverter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.XMLConverter.MakeFLMMString(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates FLMM XML string for a Freelancer item.
+            </summary>
+            <param name="displayName">In-game display name for the item.</param>
+            <param name="Other">Read the comments by the variable definitions...</param>
+            <returns>FLMM XML-formatted string ready for parsing by FLMM to insert into Freelancer.</returns>
+        </member>
+        <member name="T:FLNotePad.Miscellaneous">
+            <summary>
+            Miscellaneous support functions. This class will go away eventually.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.Miscellaneous.DecodeName(System.String)">
+            <summary>
+            Decodes an encoded Freelancer string; for example,
+            "005400720065006E0074" returns "Trent"
+            </summary>
+            <param name="encodedName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FLNotePad.Miscellaneous.EncodeName(System.String)">
+            <summary>
+            encodes text into a hex representation suitable for persisted Unicode,
+            consisting of a 4-byte hex numeric for each character in the text string.
+            For example, EncodeName takes "Trent" and returns
+            "005400720065006E0074"
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FLNotePad.Miscellaneous.EnumerateFiles(System.String,System.String)">
+            <summary>
+            Given a base folder and a file ending, returns all matching files
+            within the folder structure in a queue built from a breadth-first search.
+            </summary>
+            <param name="basePath">base folder</param>
+            <param name="fileSuffix">File termination, such as "thn" or "ini"</param>
+            <returns></returns>
+        </member>
+        <member name="M:FLNotePad.Miscellaneous.RecurseDirectory(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            Handles the business of recursively enumerating folders and adding files to the queue
+            </summary>
+            <param name="directory"></param>
+            <param name="fileSuffix"></param>
+        </member>
+        <member name="P:FLNotePad.Miscellaneous.FileSet">
+            <summary>
+            Files selected by EnumerateFiles
+            </summary>
+        </member>
+        <member name="F:FLNotePad.AboutBox1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.AboutBox1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.AboutBox1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:FLNotePad.AboutBox">
+            <summary>
+            Summary description for WinForm.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.AboutBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.AboutBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:FLNotePad.FLEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.FLEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:FLNotePad.FLEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:FLNotePad.SavedGame">
+            <summary>
+            Manipulates Freelancer saved game information.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.SavedGame.DecodeCharacter(System.String)">
+            <summary>
+            Decodes data from a Freelancer .fl save game file.
+            Altered from original code by sirlancelot.
+            Additional code provided by Watercooler Warrior.
+            Final code modified by Brian E Turner (ArchKaine)
+            </summary>
+            <param name="filepath">Path to the savegame file.</param>
+            <returns>human-readable content of the savegame file.</returns>
+        </member>
+        <member name="T:TextEditor.IniChunker">
+            <summary>
+            Breaks a Freelancer INI file down into "chunks" that
+            represent functional tokens: headers, data elements such as
+            value names and values, and delimiters such as commas and
+            equal signs.
+            All data is appended to a Queue instance allowing first-in
+            first-out parsing.
+            This chunker does NO assessment whatsoever about meaning or
+            validity of the data; it is not intended to do so. It DOES
+            correctly interpret quoted strings. 
+            </summary>
+        </member>
+        <member name="M:TextEditor.IniChunker.Read(System.String)">
+            <summary>
+            Parses a Freelancer INI file; file MUST be text, not BINI-compressed.
+            </summary>
+            <param name="filepath">Path to the file to be parsed.</param>
+        </member>
+        <member name="M:TextEditor.IniChunker.EnqueueChunk(System.Object)">
+            <summary>
+            Enqueues a chunk of data.
+            </summary>
+            <param name="chunk"></param>
+        </member>
+        <member name="P:TextEditor.IniChunker.TokenQueue">
+            <summary>
+            A queue containing parsed tokens from the INI file.
+            </summary>
+        </member>
+        <member name="T:TextEditor.IniChunker.StreamStates">
+            <summary>
+            Stream parser states.
+            </summary>
+        </member>
+        <member name="T:FLNotePad.IdsData">
+            <summary>
+            Provides support for manipulating ids name/info strings.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.IdsData.MakeIdsName(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates FLMM XML string for a Freelancer item.
+            </summary>
+            <param name="displayName">In-game display name for the item.</param>
+            <param name="Other">Read the comments by the variable definitions...</param>
+            <returns>FLMM XML-formatted string ready for parsing by FLMM to insert into Freelancer.</returns>
+        </member>
+        <member name="T:SearchableControls.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SearchableControls.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SearchableControls.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:FLNotePad.Flcodec">
+            <summary>
+            Manipulates character state data such as that available in a
+            saved game file.
+            To allow easy manipulation, the class exposes information as
+            clearly understandable text wherever possible. There are limitations
+            to this - hashes and nicknames are used for most list elements.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.Flcodec.FlFileList">
+            <summary>
+            Returns list of all FL files.
+            </summary>
+            <param name="targetFolder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FLNotePad.Flcodec.BatchDecode(System.String)">
+            <summary>
+            Attempts batch decoding of all Freelancer FL files on the computer.
+            </summary>
+            <param name="targetFolder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FLNotePad.Flcodec.Load(System.String)">
+            <summary>
+            Decodes data from a Freelancer .fl save game file
+            </summary>
+            <param name="filepath">Path to the savegame file.</param>
+            <returns>human-readable content of the savegame file.</returns>
+        </member>
+        <member name="M:FLNotePad.Flcodec.Save">
+            <summary>
+            Saves the loaded game data back to the original FL file.
+            If it cannot be saved for some reason, this method returns False.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FLNotePad.Flcodec.SaveTo(System.String)">
+            <summary>
+            Saves data to a file
+            </summary>
+            <param name="newPath">Path to the new file</param>
+            <returns>true if successful, otherwise false.</returns>
+        </member>
+        <member name="P:FLNotePad.Flcodec.RawData">
+            <summary>
+            Returns a raw UTF-7 string representation of the pilot's state.
+            </summary>
+        </member>
+        <member name="P:FLNotePad.Flcodec.AccountFolder">
+            <summary>
+            Name of the folder where the pilot's file is stored.
+            </summary>
+        </member>
+        <member name="P:FLNotePad.Flcodec.BaseFileName">
+            <summary>
+            Base name (without the .fl) of the file where the pilot is stored.
+            </summary>
+        </member>
+        <member name="P:FLNotePad.PilotInformation.FileName">
+            <summary>
+            base name of the file containing the pilot information
+            </summary>
+        </member>
+        <member name="P:FLNotePad.PilotInformation.AccountFolder">
+            <summary>
+            Base name of the folder containing the pilot's information.
+            </summary>
+        </member>
+        <member name="P:FLNotePad.PilotInformation.SkipVisits">
+            <summary>
+            If true, we skip recording the visit lines
+            </summary>
+        </member>
+        <member name="P:FLNotePad.PilotInformation.TerminateAtVisits">
+            <summary>
+            If true (default) then when we hit the first visit line we quit processing.
+            </summary>
+        </member>
+        <member name="M:FLNotePad.Program.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:TextEditor.RegistryData">
+            <summary>
+            Allows you to quickly access data stored in the registry for Freelancer
+            and various Freelancer modification support tools.
+            </summary>
+        </member>
+        <member name="P:TextEditor.RegistryData.InstallPath">
+            <summary>
+            Location where Freelancer is installed
+            </summary>
+        </member>
+        <member name="P:TextEditor.RegistryData.FlmmPath">
+            <summary>
+            Location where Freelancer Mod Manager is installed
+            </summary>
+        </member>
+        <member name="P:TextEditor.RegistryData.SDKPath">
+            <summary>
+            Location where Freelancer SDK is installed
+            </summary>
+        </member>
+    </members>
+</doc>
