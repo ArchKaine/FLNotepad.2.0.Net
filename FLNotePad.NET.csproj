@@ -95,10 +95,6 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="SearchableControls, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>K:\SearchableControls.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -229,6 +225,12 @@
     <None Include="Resources\MISC01.ICO" />
     <None Include="Resources\red_save.ico" />
     <None Include="Resources\green_save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="SearchableControls.csproj">
+      <Project>{45a3f930-1a71-4b5d-905a-2cd1dd700ef6}</Project>
+      <Name>SearchableControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
