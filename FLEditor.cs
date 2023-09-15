@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using FLNotePad;
 using SearchableControls;
 using System.Threading;
+using System.Linq;
 
 namespace FLNotePad
 {
@@ -19,52 +20,81 @@ namespace FLNotePad
                 openFile(openFileDialog1.FileName);
             }
         }
-        public void openFile(string FileNameAndPath) {
-            if (Path.GetExtension(FileNameAndPath).IndexOf("rtf") >= 1) {
-                for (int i = 0; i <= 10; i++) {
-                    toolStripProgressBar2.Increment(10);
-                    System.Threading.Thread.Sleep(10);
-                }
-                srtb.LoadFile(FileNameAndPath, RichTextBoxStreamType.RichText);
-                for (int i = 10; i >= 0; i--) {
-                    toolStripProgressBar2.Increment(-10);
-                    System.Threading.Thread.Sleep(10);
-                }
+        public void openFile(string FileNameAndPath)
+        {
+            switch (Path.GetExtension(FileNameAndPath).ToLower())
+            {
+                case "rtf":
+                    foreach (int i in Enumerable.Range(0, 10))
+                    {
+                        toolStripProgressBar2.Increment(10);
+                        System.Threading.Thread.Sleep(10);
+                    }
+                    try
+                    {
+                        srtb.LoadFile(FileNameAndPath, RichTextBoxStreamType.RichText);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the error.
+                    }
+                    foreach (int i in Enumerable.Range(10, 0))
+                    {
+                        toolStripProgressBar2.Increment(-10);
+                        System.Threading.Thread.Sleep(10);
+                    }
+                    break;
+                case "fl":
+                    if (FileNameAndPath.Contains("DataStorm.fl"))
+                    {
+                        srtb.Text = "We're sorry, but attempting to open a DataStorm file in this will not work, please try something else.";
+                    }
+                    else
+                    {
+                        //SavedGame sg = new SavedGame();
+                        Flcodec sg = new Flcodec();
+                        try
+                        {
+                            this.srtb.Text = sg.Load(FileNameAndPath);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle the error.
+                        }
+                    }
+                    foreach (int i in Enumerable.Range(10, 0))
+                    {
+                        toolStripProgressBar2.Increment(-10);
+                        System.Threading.Thread.Sleep(10);
+                    }
+                    break;
+                default:
+                    foreach (int i in Enumerable.Range(1, 10))
+                    {
+                        toolStripProgressBar2.Increment(10);
+                        System.Threading.Thread.Sleep(10);
+                    }
+                    try
+                    {
+                        this.srtb.LoadFile(FileNameAndPath, RichTextBoxStreamType.PlainText);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the error.
+                    }
+                    foreach (int i in Enumerable.Range(10, 0))
+                    {
+                        toolStripProgressBar2.Increment(-10);
+                        System.Threading.Thread.Sleep(10);
+                    }
+                    break;
             }
-            else if (Path.GetExtension(FileNameAndPath).IndexOf("fl") >= 1) {
-                for (int i = 1; i <= 10; i++) {
-                    toolStripProgressBar2.Increment(10);
-                    System.Threading.Thread.Sleep(10);
-                }
-                if (FileNameAndPath.Contains("DataStorm.fl")) {
-                    srtb.Text = "We're sorry, but attempting to open a DataStorm file in this will not work, please try something else.";
-                }
-                else {
-                    //SavedGame sg = new SavedGame();
-                    Flcodec sg = new Flcodec();
-                    this.srtb.Text = sg.Load(FileNameAndPath);
-                }
-                for (int i = 10; i >= 0; i--) {
-                    toolStripProgressBar2.Increment(-10);
-                    System.Threading.Thread.Sleep(10);
-                }
 
-            }
-            else {
-                for (int i = 1; i <= 10; i++) {
-                    toolStripProgressBar2.Increment(10);
-                    System.Threading.Thread.Sleep(10);
-                }
-                this.srtb.LoadFile(FileNameAndPath, RichTextBoxStreamType.PlainText);
-                for (int i = 10; i >= 0; i--) {
-                    toolStripProgressBar2.Increment(-10);
-                    System.Threading.Thread.Sleep(10);
-                }
-            }
             srtb.Modified = false;
             UpdateStatusBar(FileNameAndPath);
             DocumentFileName = FileNameAndPath;
         }
+
 
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e) {
             FLEditor editor = new FLEditor();
