@@ -439,7 +439,7 @@ namespace FLNotePad
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.srtb);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1582, 776);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1582, 770);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(0);
@@ -450,8 +450,8 @@ namespace FLNotePad
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             // 
             // statusStrip1
             // 
@@ -510,7 +510,7 @@ namespace FLNotePad
             this.srtb.Location = new System.Drawing.Point(0, 0);
             this.srtb.Margin = new System.Windows.Forms.Padding(0);
             this.srtb.Name = "srtb";
-            this.srtb.Size = new System.Drawing.Size(1582, 776);
+            this.srtb.Size = new System.Drawing.Size(1582, 770);
             this.srtb.TabIndex = 2;
             this.srtb.Text = "";
             this.srtb.ModifiedChanged += new System.EventHandler(this.srtb_ModifiedChanged);
@@ -737,6 +737,7 @@ namespace FLNotePad
             this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FLEditor";

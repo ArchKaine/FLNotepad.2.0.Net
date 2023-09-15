@@ -241,7 +241,7 @@
   <data name="toolStripStatusLabel3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAAAQCAIAAABvM03UAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsRAAALEQF/ZF+RAAAKv0lE
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsPAAALDwGS+QOlAAAKv0lE
         QVRYRz3YCYxeVRUH8C/nvq8LtdiWrtN1puu0M12mLZRFoIstIG2hSBfKWqTaKIaIICgSUNI0aQLRJhpt
         QiAQkiamBmIkpgEXiKASwUBcQtWiBStSu+s3M23j790bm9y83Hnfvef8z//8z7n3TaN14uutI7Nax1b1
         vdb+l2sm7EvxvYjbI9ZFXB+xOeK5iF+2nfdknl+Xxw0Rn45YH3FvxK+mDD24of3d5W2vTRzyxsyP/2np
@@ -634,7 +634,7 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>74</value>
+    <value>25</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

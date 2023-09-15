@@ -96,6 +96,7 @@ namespace FLNotePad
         }
 
 
+
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e) {
             FLEditor editor = new FLEditor();
             editor.Show();
