@@ -119,7 +119,7 @@ namespace FLNotePad
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(1582, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(869, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -439,12 +439,12 @@ namespace FLNotePad
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.srtb);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1582, 770);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(869, 776);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1582, 853);
+            this.toolStripContainer1.Size = new System.Drawing.Size(869, 853);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -464,7 +464,7 @@ namespace FLNotePad
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip1.Size = new System.Drawing.Size(1582, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(869, 22);
             this.statusStrip1.TabIndex = 0;
             // 
             // toolStripStatusLabel1
@@ -510,7 +510,7 @@ namespace FLNotePad
             this.srtb.Location = new System.Drawing.Point(0, 0);
             this.srtb.Margin = new System.Windows.Forms.Padding(0);
             this.srtb.Name = "srtb";
-            this.srtb.Size = new System.Drawing.Size(1582, 770);
+            this.srtb.Size = new System.Drawing.Size(869, 776);
             this.srtb.TabIndex = 2;
             this.srtb.Text = "";
             this.srtb.ModifiedChanged += new System.EventHandler(this.srtb_ModifiedChanged);
@@ -537,7 +537,7 @@ namespace FLNotePad
             this.toolStripProgressBar2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1582, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(869, 27);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             // 
@@ -734,7 +734,7 @@ namespace FLNotePad
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1582, 853);
+            this.ClientSize = new System.Drawing.Size(869, 853);
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
