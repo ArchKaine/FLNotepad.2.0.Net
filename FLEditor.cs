@@ -24,7 +24,7 @@ namespace FLNotePad
         {
             switch (Path.GetExtension(FileNameAndPath).ToLower())
             {
-                case "rtf":
+                case ".rtf":
                     foreach (int i in Enumerable.Range(0, 10))
                     {
                         toolStripProgressBar2.Increment(10);
@@ -44,7 +44,7 @@ namespace FLNotePad
                         System.Threading.Thread.Sleep(10);
                     }
                     break;
-                case "fl":
+                case ".fl":
                     if (FileNameAndPath.Contains("DataStorm.fl"))
                     {
                         srtb.Text = "We're sorry, but attempting to open a DataStorm file in this will not work, please try something else.";
